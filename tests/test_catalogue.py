@@ -48,3 +48,10 @@ class CatalogueTests(unittest.TestCase):
    m,files=c.source_manifest(path.parent);a=c.package(m,files,key);self.assertEqual(a,c.package(m,files,key))
    envelope=json.loads(c.zipfile.ZipFile(c.io.BytesIO(a)).read('manifest.json'));key.public_key().verify(bytes.fromhex(envelope['signature']),envelope['payload'].encode())
 if __name__=='__main__':unittest.main()
+
+class NumericBoundsTests(unittest.TestCase):
+ def test_integer_bounds_match_native_controls(self):
+  for lo,hi,step in [(0.25,10,1),(0,10,.5),(0,2**64,1)]:
+   with self.assertRaises(AssertionError):c.check_parameter(dict(id='count',label='Count',kind='integer',default=1,min=lo,max=hi,step=step))
+ def test_group_heading_is_bounded(self):
+  with self.assertRaises(AssertionError):c.check_parameter(dict(id='value',label='Value',kind='number',default=0,group='x'*81))

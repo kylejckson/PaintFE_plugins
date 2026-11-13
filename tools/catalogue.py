@@ -22,9 +22,11 @@ def check_parameter(p):
     assert set(p)<=set('id label kind default help group min max step choices'.split()),'Unknown parameter field'
     assert ID.fullmatch(p['id']) and not any(c in p['id'] for c in '.-'),'Invalid parameter id'
     assert 0<len(p['label'])<=80 and len(p.get('help',''))<=1000
+    assert isinstance(p.get('group',''),str) and len(p.get('group',''))<=80,'Invalid parameter group'
     kind=p['kind'];v=p['default']
     lo,hi,step=p.get('min',0),p.get('max',1),p.get('step',1)
     assert all(isinstance(n,(int,float)) and math.isfinite(n) for n in (lo,hi,step)) and lo<=hi and step>0
+    if kind=='integer':assert all(n==int(n) for n in (lo,hi,step)) and step>=1 and -(2**63)<=lo and hi<2**63,'Invalid integer bounds'
     if kind in ('number','integer'):assert type(v) in (int,float) and math.isfinite(v) and lo<=v<=hi and (kind!='integer' or v==int(v))
     elif kind=='boolean':assert type(v) is bool
     elif kind=='text':assert isinstance(v,str) and len(v)<=2048

@@ -18,3 +18,5 @@ Scripts read values through `params`, for example `params.radius` or `params.col
 Previews always begin from the original input. Changing a value cancels obsolete work. Apply commits a validated final result once. Cancel belongs to PaintFE and cannot be hidden by the script. The app offers manual Preview as well as Live preview. Arbitrary custom windows, shaders and executable widgets are outside API 1.
 
 Consecutive parameters with the same non-empty group label share a section heading.
+
+Integer parameters need whole-number minimum, maximum and step values, with a step of at least one. Bounds must fit a signed 64-bit integer. Section headings are limited to 80 characters.
