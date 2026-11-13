@@ -1,0 +1,27 @@
+name: Refresh download statistics
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: plugin-catalogue
+  cancel-in-progress: false
+jobs:
+  statistics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r requirements.txt
+      - run: python tools/catalogue.py validate
+      - run: python -m unittest discover -s tests -v
+      - name: Update signed catalogue statistics
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PLUGIN_SIGNING_KEY: ${{ secrets.PLUGIN_SIGNING_KEY }}
+        run: python tools/publish.py --statistics

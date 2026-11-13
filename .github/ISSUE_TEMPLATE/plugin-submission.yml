@@ -1,0 +1,24 @@
+name: Plugin submission
+description: Submit a pack or ask for help preparing a pull request.
+title: "Plugin submission: "
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Plugin name and version
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source, licence and exported pack
+      description: Link the source and attach your .pfeplugin file. Include artwork licensing.
+    validations:
+      required: true
+  - type: textarea
+    id: tests
+    attributes:
+      label: PaintFE build and testing
+      description: Describe defaults, selection, alpha, Cancel, Undo and expected output.
+    validations:
+      required: true

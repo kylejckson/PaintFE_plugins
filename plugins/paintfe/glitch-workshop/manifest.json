@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "api": 1,
+  "id": "paintfe.glitch-workshop",
+  "version": "1.0.0",
+  "name": "Glitch Workshop",
+  "author": "PaintFE",
+  "description": "Scanlines and repeatable row displacement for digital textures.",
+  "license": "MIT",
+  "tags": [
+    "Glitch",
+    "Texture"
+  ],
+  "effects": [
+    {
+      "id": "scanlines",
+      "name": "Scanlines",
+      "category": "Glitch Workshop",
+      "script": "effects/scanlines.rhai",
+      "description": "Add regular horizontal or vertical scanlines.",
+      "histogram": false,
+      "parameters": [
+        {
+          "id": "spacing",
+          "label": "Spacing",
+          "kind": "integer",
+          "default": 6,
+          "min": 2,
+          "max": 64,
+          "step": 1,
+          "help": ""
+        },
+        {
+          "id": "strength",
+          "label": "Strength",
+          "kind": "number",
+          "default": 0.4,
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "help": ""
+        },
+        {
+          "id": "vertical",
+          "label": "Vertical lines",
+          "kind": "boolean",
+          "default": false,
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "help": ""
+        }
+      ]
+    },
+    {
+      "id": "row_offset",
+      "name": "Row Offset",
+      "category": "Glitch Workshop",
+      "script": "effects/row_offset.rhai",
+      "description": "Shift bands of pixels with repeatable, wrapped offsets.",
+      "histogram": false,
+      "parameters": [
+        {
+          "id": "band",
+          "label": "Band height",
+          "kind": "integer",
+          "default": 16,
+          "min": 1,
+          "max": 128,
+          "step": 1,
+          "help": ""
+        },
+        {
+          "id": "distance",
+          "label": "Maximum offset",
+          "kind": "integer",
+          "default": 24,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "help": ""
+        },
+        {
+          "id": "seed",
+          "label": "Seed",
+          "kind": "integer",
+          "default": 7,
+          "min": 1,
+          "max": 1000,
+          "step": 1,
+          "help": ""
+        }
+      ]
+    }
+  ],
+  "icon": "icons/browser.png",
+  "menu_light": "icons/menu-light.png",
+  "menu_dark": "icons/menu-dark.png",
+  "screenshot": "screenshots/preview.png"
+}

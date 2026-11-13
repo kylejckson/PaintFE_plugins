@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "api": 1,
+  "id": "paintfe.colour-workshop",
+  "version": "1.0.0",
+  "name": "Colour Workshop",
+  "author": "PaintFE",
+  "description": "Two adjustable colour effects, with native controls and a duotone histogram.",
+  "license": "MIT",
+  "tags": [
+    "Colour",
+    "Photography"
+  ],
+  "effects": [
+    {
+      "id": "duotone",
+      "name": "Duotone",
+      "category": "Colour Workshop",
+      "script": "effects/duotone.rhai",
+      "description": "Map the image between two colours while preserving its alpha.",
+      "histogram": true,
+      "parameters": [
+        {
+          "id": "shadow",
+          "label": "Shadows",
+          "kind": "colour",
+          "default": [
+            24,
+            36,
+            72,
+            255
+          ],
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "help": ""
+        },
+        {
+          "id": "light",
+          "label": "Highlights",
+          "kind": "colour",
+          "default": [
+            255,
+            202,
+            116,
+            255
+          ],
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "help": ""
+        },
+        {
+          "id": "strength",
+          "label": "Strength",
+          "kind": "number",
+          "default": 0.8,
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "help": ""
+        }
+      ]
+    },
+    {
+      "id": "channels",
+      "name": "Channel Shift",
+      "category": "Colour Workshop",
+      "script": "effects/channels.rhai",
+      "description": "Offset the red channel for a simple chromatic split.",
+      "histogram": false,
+      "parameters": [
+        {
+          "id": "offset",
+          "label": "Horizontal offset",
+          "kind": "integer",
+          "default": 8,
+          "min": -100,
+          "max": 100,
+          "step": 1,
+          "help": ""
+        }
+      ]
+    }
+  ],
+  "icon": "icons/browser.png",
+  "menu_light": "icons/menu-light.png",
+  "menu_dark": "icons/menu-dark.png",
+  "screenshot": "screenshots/preview.png"
+}
