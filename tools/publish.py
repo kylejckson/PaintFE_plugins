@@ -37,6 +37,20 @@ def publish_branch(out):
     try:api(f'repos/{c.REPO}/pages/builds',{},'POST')
     except subprocess.CalledProcessError:print('Pages is not configured yet; enable the catalogue branch as the Pages source.')
 
+def reconcile(value,old):
+    """Retain immutable URLs, first-publication dates and explicit source removals."""
+    fresh=[]
+    for i,p in enumerate(value['packs']):
+        prior=old.get(p['manifest']['id'])
+        if prior and prior['manifest']['version']==p['manifest']['version']:
+            assert prior['sha256']==p['sha256'],'Changed plugin must have a new version'
+            value['packs'][i]=prior
+        else:
+            if prior:p['published']=prior['published']
+            fresh.append(p)
+    assert fresh or set(old)!=set(p['manifest']['id'] for p in value['packs']),'No changed plugins. Use the statistics workflow to refresh the catalogue.'
+    return fresh
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--tag');parser.add_argument('--statistics',action='store_true');a=parser.parse_args()
     key=c.Ed25519PrivateKey.from_private_bytes(bytes.fromhex(os.environ['PLUGIN_SIGNING_KEY']))
@@ -50,17 +64,10 @@ def main():
         assert a.tag and c.re.fullmatch(r'v[0-9.]+',a.tag)
         value=c.build(a.tag,out,key);old={}
         if previous:old={p['manifest']['id']:p for p in json.loads(json.loads(previous)['payload'])['packs']}
-        fresh=[]
-        for i,p in enumerate(value['packs']):
-            prior=old.get(p['manifest']['id'])
-            if prior and prior['manifest']['version']==p['manifest']['version']:
-                assert prior['sha256']==p['sha256'],'Changed plugin must have a new version'
-                value['packs'][i]=prior
-            else:fresh.append(p)
-        assert fresh,'No changed plugins. Use the statistics workflow to refresh the catalogue.'
+        fresh=reconcile(value,old)
         try:release=api(f'repos/{c.REPO}/releases/tags/{a.tag}')
         except subprocess.CalledProcessError:
-            release=api(f'repos/{c.REPO}/releases',{'tag_name':a.tag,'name':'Community plugins '+a.tag,'body':'Original Colour Workshop and Glitch Workshop script packs, with native effect controls and offline processing.\n\nRequires a PaintFE build with Script Plugin API 1. Current stable builds may not include the Plugin Browser yet. See the repository author guide for installation and development.','draft':False,'prerelease':True})
+            release=api(f'repos/{c.REPO}/releases',{'tag_name':a.tag,'name':'Community plugins '+a.tag,'body':'Community script effect packs, with native effect controls and offline processing.\n\nRequires a PaintFE build with Script Plugin API 1. Current stable builds may not include the Plugin Browser yet. See the repository author guide for installation and development.','draft':False,'prerelease':True})
         existing={x['name']:x for x in release['assets']}
         for p in fresh:
             for url in [p['url'],p.get('icon_url',''),p.get('screenshot_url','')]:

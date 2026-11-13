@@ -1,32 +1,188 @@
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "title":"PaintFE script plugin source manifest",
-  "type":"object","additionalProperties":false,
-  "required":["schema","api","id","version","name","author","description","license","tags","effects"],
-  "properties":{
-    "schema":{"const":1},"api":{"const":1},
-    "id":{"type":"string","pattern":"^[a-z][a-z0-9_.-]{0,79}$"},
-    "version":{"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+$"},
-    "name":{"type":"string","minLength":1,"maxLength":80},
-    "author":{"type":"string","minLength":1,"maxLength":80},
-    "description":{"type":"string","minLength":1,"maxLength":4096},
-    "license":{"type":"string","minLength":1,"maxLength":120},
-    "tags":{"type":"array","maxItems":12,"items":{"type":"string","minLength":1,"maxLength":40}},
-    "icon":{"type":"string"},"screenshot":{"type":"string"},"menu_light":{"type":"string"},"menu_dark":{"type":"string"},
-    "effects":{"type":"array","minItems":1,"maxItems":16,"items":{"$ref":"#/$defs/effect"}}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PaintFE script plugin source manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "api",
+    "id",
+    "version",
+    "name",
+    "author",
+    "description",
+    "license",
+    "tags",
+    "effects"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "api": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,79}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "tags": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 40
+      }
+    },
+    "icon": {
+      "type": "string"
+    },
+    "screenshot": {
+      "type": "string"
+    },
+    "menu_light": {
+      "type": "string"
+    },
+    "menu_dark": {
+      "type": "string"
+    },
+    "effects": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "$ref": "#/$defs/effect"
+      }
+    }
   },
-  "$defs":{
-    "effect":{"type":"object","additionalProperties":false,"required":["id","name","category","script"],"properties":{
-      "id":{"type":"string","pattern":"^[a-z][a-z0-9_.-]{0,79}$"},"name":{"type":"string","minLength":1,"maxLength":80},
-      "category":{"type":"string","minLength":1,"maxLength":40},"description":{"type":"string","maxLength":4096},
-      "script":{"type":"string","pattern":"^[a-zA-Z0-9_./-]+[.]rhai$"},"histogram":{"type":"boolean"},
-      "parameters":{"type":"array","maxItems":24,"items":{"$ref":"#/$defs/parameter"}}
-    }},
-    "parameter":{"type":"object","additionalProperties":false,"required":["id","label","kind","default"],"properties":{
-      "id":{"type":"string","pattern":"^[a-z][a-z0-9_]{0,79}$"},"label":{"type":"string","minLength":1,"maxLength":80},
-      "kind":{"enum":["number","integer","boolean","text","choice","colour"]},"default":{},
-      "help":{"type":"string","maxLength":1000},"min":{"type":"number"},"max":{"type":"number"},"step":{"type":"number","exclusiveMinimum":0},
-      "choices":{"type":"array","maxItems":64,"items":{"type":"string","minLength":1,"maxLength":80}}
-    }}
+  "$defs": {
+    "effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "category",
+        "script"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_.-]{0,79}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "script": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_./-]+[.]rhai$"
+        },
+        "histogram": {
+          "type": "boolean"
+        },
+        "parameters": {
+          "type": "array",
+          "maxItems": 24,
+          "items": {
+            "$ref": "#/$defs/parameter"
+          }
+        }
+      }
+    },
+    "parameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "kind",
+        "default"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,79}$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "kind": {
+          "enum": [
+            "number",
+            "integer",
+            "boolean",
+            "text",
+            "choice",
+            "colour"
+          ]
+        },
+        "default": {},
+        "help": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "step": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "choices": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        },
+        "group": {
+          "type": "string",
+          "maxLength": 80
+        }
+      }
+    }
   }
 }

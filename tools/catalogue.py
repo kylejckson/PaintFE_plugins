@@ -19,7 +19,7 @@ def unique(pairs):
     return out
 
 def check_parameter(p):
-    assert set(p)<=set('id label kind default help min max step choices'.split()),'Unknown parameter field'
+    assert set(p)<=set('id label kind default help group min max step choices'.split()),'Unknown parameter field'
     assert ID.fullmatch(p['id']) and not any(c in p['id'] for c in '.-'),'Invalid parameter id'
     assert 0<len(p['label'])<=80 and len(p.get('help',''))<=1000
     kind=p['kind'];v=p['default']
@@ -36,7 +36,7 @@ def source_manifest(directory):
     m=json.loads((directory/'manifest.json').read_text(encoding='utf-8'),object_pairs_hook=unique);assert m['schema']==m['api']==1
     assert set(m)<=set('schema api id version name author description license tags effects files icon menu_light menu_dark screenshot'.split()),'Unknown manifest field'
     assert ID.fullmatch(m['id']) and re.fullmatch(r'\d{1,8}\.\d{1,8}\.\d{1,8}',m['version'])
-    for key,maximum in [('name',80),('author',80),('description',4096),('license',120)]:assert isinstance(m[key],str) and 0<len(m[key])<=maximum and not any(ord(c)<32 for c in m[key])
+    for key,maximum in [('name',80),('author',80),('description',4096),('license',120)]:assert isinstance(m[key],str) and 0<len(m[key])<=maximum and not any(ord(c)<32 and not (key=='description' and c in '\n\t') for c in m[key])
     assert 0<len(m['effects'])<=16 and len(m['tags'])<=12 and all(isinstance(t,str) and 0<len(t)<=40 for t in m['tags'])
     assert all(portable(part) for part in m['id'].split('.'))
     ids=set();files={}
