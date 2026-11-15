@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "theme",
+  "appearance": "theme.txt",
+  "id": "paintfe.frosted-glass-dark",
+  "version": "1.0.1",
+  "name": "Glass Dark",
+  "author": "PaintFE",
+  "description": "Charcoal glass, ice-blue accents and a softly blurred desktop. Clear controls keep the focus on your image.",
+  "license": "MIT",
+  "tags": [
+    "Glass",
+    "Dark",
+    "Frosted"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

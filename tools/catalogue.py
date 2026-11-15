@@ -36,10 +36,10 @@ def check_parameter(p):
 def source_manifest(directory):
     assert (directory/'manifest.json').stat().st_size<=512*1024
     m=json.loads((directory/'manifest.json').read_text(encoding='utf-8'),object_pairs_hook=unique);assert m['schema']==m['api']==1
-    assert set(m)<=set('schema api id version name author description license tags effects files icon menu_light menu_dark screenshot'.split()),'Unknown manifest field'
+    assert set(m)<=set('schema api kind appearance id version name author description license tags effects files icon menu_light menu_dark screenshot'.split()),'Unknown manifest field'
     assert ID.fullmatch(m['id']) and re.fullmatch(r'\d{1,8}\.\d{1,8}\.\d{1,8}',m['version'])
     for key,maximum in [('name',80),('author',80),('description',4096),('license',120)]:assert isinstance(m[key],str) and 0<len(m[key])<=maximum and not any(ord(c)<32 and not (key=='description' and c in '\n\t') for c in m[key])
-    assert 0<len(m['effects'])<=16 and len(m['tags'])<=12 and all(isinstance(t,str) and 0<len(t)<=40 for t in m['tags'])
+    assert ((m.get('kind','effects')=='effects' and 0<len(m['effects'])<=16 and not m.get('appearance')) or (m.get('kind') in ('theme','icons') and not m['effects'] and resource(m.get('appearance','')))) and len(m['tags'])<=12 and all(isinstance(t,str) and 0<len(t)<=40 for t in m['tags'])
     assert all(portable(part) for part in m['id'].split('.'))
     ids=set();files={}
     for e in m['effects']:
@@ -55,12 +55,16 @@ def source_manifest(directory):
         assert not path.is_symlink(),'Links are not allowed'
         if path.is_dir() or path.name=='manifest.json':continue
         name=path.relative_to(directory).as_posix();assert resource(name)
-        assert name.endswith(('.rhai','.png','.md','.txt')) or name=='LICENSE'
+        assert name.endswith(('.rhai','.png','.md','.txt')) or name=='LICENSE' or (m.get('kind')=='icons' and name==m.get('appearance') and name.endswith('.zip'))
         b=path.read_bytes();assert 0<len(b)<=4*1024*1024
         if name.endswith('.png'):
             assert b[:8]==b'\x89PNG\r\n\x1a\n';w,h=struct.unpack('>II',b[16:24]);assert 0<w<=1600 and 0<h<=1200
         files[name]=b
     assert len(files)<=64 and sum(map(len,files.values()))<=LIMIT and 'LICENSE' in files
+    if m.get('kind','effects')!='effects':
+        assert m['appearance'] in files and not any(n.endswith('.rhai') for n in files)
+        if m['kind']=='theme':assert len(files[m['appearance']])<=512*1024
+        assert m['appearance'].endswith('.txt' if m['kind']=='theme' else '.zip')
     for e in m['effects']:assert e['script'] in files
     for key in ('icon','menu_light','menu_dark','screenshot'):
         if m.get(key):assert m[key] in files and m[key].endswith('.png')

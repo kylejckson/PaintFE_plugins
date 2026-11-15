@@ -1,11 +1,11 @@
-name: Plugin submission
+name: Community pack submission
 description: Submit a pack or ask for help preparing a pull request.
-title: "Plugin submission: "
+title: "Pack submission: "
 body:
   - type: input
     id: name
     attributes:
-      label: Plugin name and version
+      label: Pack type, name and version
     validations:
       required: true
   - type: textarea
@@ -19,6 +19,6 @@ body:
     id: tests
     attributes:
       label: PaintFE build and testing
-      description: Describe defaults, selection, alpha, Cancel, Undo and expected output.
+      description: For effects, describe defaults, selection, alpha, Cancel and Undo. For themes or icons, describe Preview, Keep, Restore, restart and removal. Include expected results.
     validations:
       required: true

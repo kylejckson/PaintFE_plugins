@@ -55,3 +55,21 @@ class NumericBoundsTests(unittest.TestCase):
    with self.assertRaises(AssertionError):c.check_parameter(dict(id='count',label='Count',kind='integer',default=1,min=lo,max=hi,step=step))
  def test_group_heading_is_bounded(self):
   with self.assertRaises(AssertionError):c.check_parameter(dict(id='value',label='Value',kind='number',default=0,group='x'*81))
+
+class AppearancePackTests(unittest.TestCase):
+ def test_theme_and_icon_packs_have_no_scripts(self):
+  seen=set()
+  for path in c.sources():
+   m,files=c.source_manifest(path.parent)
+   kind=m.get('kind','effects');seen.add(kind)
+   if kind!='effects':
+    self.assertEqual(m['effects'],[])
+    self.assertIn(m['appearance'],files)
+    self.assertFalse(any(name.endswith('.rhai') for name in files))
+  self.assertTrue({'effects','theme'}<=seen)
+  self.assertNotIn('Luminous Icons',[c.source_manifest(p.parent)[0]['name'] for p in c.sources()])
+  icon,_=c.source_manifest(c.ROOT/'examples/legacy/luminous-icons');self.assertEqual(icon['kind'],'icons')
+ def test_starter_pack_names_are_useful_and_unique(self):
+  names=[c.source_manifest(p.parent)[0]['name'] for p in c.sources()]
+  self.assertEqual(len(names),len(set(names)))
+  for name in ['Two Tone','Paper Grain','Colour Offset','Soft Vignette']:self.assertIn(name,names)

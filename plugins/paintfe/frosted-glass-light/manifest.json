@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "theme",
+  "appearance": "theme.txt",
+  "id": "paintfe.frosted-glass-light",
+  "version": "1.0.1",
+  "name": "Glass Light",
+  "author": "PaintFE",
+  "description": "Pearl-white glass with cool blue accents and a softly blurred desktop. Dark text and quiet borders keep things clear.",
+  "license": "MIT",
+  "tags": [
+    "Glass",
+    "Light",
+    "Frosted"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

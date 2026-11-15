@@ -9,3 +9,5 @@ Paths are relative and restricted. Absolute paths, traversal, symlinks, duplicat
 Menu icons may supply light and dark PNG variants. Use a 64x64 browser icon, 24x24 menu icons and a 16:9 screenshot no larger than 1600x1200. All artwork needs a compatible licence.
 
 Run `python tools/catalogue.py validate` before submission. The trusted publishing workflow creates signed packages. Contributors never need the signing key. A pack update requires a new version, but a PaintFE patch release does not require repackaging if API compatibility remains unchanged.
+
+Appearance packages use `kind: theme` or `kind: icons`, an `appearance` resource path ending in .txt or .zip, and an empty effects list. They cannot contain Rhai scripts. Keep existing IDs and versioned assets immutable. Theme text uses PaintFE appearance export; icon ZIPs use the existing icon-pack format. Both use the same signed envelope and resource hashes.

@@ -25,7 +25,7 @@ def public_bytes(url,limit):
 def publish_branch(out):
     value=json.loads(json.loads((out/'catalogue.json').read_text(encoding='utf-8'))['payload'])
     cards=''.join('<article><h2>'+html.escape(p['manifest']['name'])+'</h2><p>'+html.escape(p['manifest']['description'])+'</p><a href="'+html.escape(p['url'],quote=True)+'">Download pack</a></article>' for p in value['packs'])
-    page='<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>PaintFE community plugins</title><style>body{font:17px system-ui;max-width:960px;margin:60px auto;padding:24px;background:#f6f5fa;color:#28263a}article{background:white;border:1px solid #dedbe5;border-radius:14px;padding:24px;margin:20px 0}a{color:#ad3900}</style><h1>PaintFE community plugins</h1><p>Portable script effects for PaintFE builds with Script Plugin API 1. Current stable builds may not include the plugin browser yet.</p><p><a href="https://github.com/'+c.REPO+'">Source, author guides and contributions</a></p>'+cards+'</html>'
+    page='<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>PaintFE community packs</title><style>body{font:17px system-ui;max-width:960px;margin:60px auto;padding:24px;background:#f6f5fa;color:#28263a}article{background:white;border:1px solid #dedbe5;border-radius:14px;padding:24px;margin:20px 0}a{color:#ad3900}</style><h1>PaintFE community packs</h1><p>Effects, themes and icon packs for PaintFE 1.5.0 or a compatible preview. PaintFE 1.4.28 does not include Community packs.</p><p><a href="https://github.com/'+c.REPO+'">Source, author guides and contributions</a></p>'+cards+'</html>'
     files={'catalogue.json':(out/'catalogue.json').read_text(encoding='utf-8'),'metrics.json':(out/'metrics.json').read_text(encoding='utf-8'),'.nojekyll':'','index.html':page}
     tree=api(f'repos/{c.REPO}/git/trees',{'tree':[{'path':name,'mode':'100644','type':'blob','content':content} for name,content in files.items()]})
     parent=None
@@ -67,7 +67,7 @@ def main():
         fresh=reconcile(value,old)
         try:release=api(f'repos/{c.REPO}/releases/tags/{a.tag}')
         except subprocess.CalledProcessError:
-            release=api(f'repos/{c.REPO}/releases',{'tag_name':a.tag,'name':'Community plugins '+a.tag,'body':'Community script effect packs, with native effect controls and offline processing.\n\nRequires a PaintFE build with Script Plugin API 1. Current stable builds may not include the Plugin Browser yet. See the repository author guide for installation and development.','draft':False,'prerelease':True})
+            release=api(f'repos/{c.REPO}/releases',{'tag_name':a.tag,'name':'Community packs '+a.tag,'body':'Community effects, themes and icon packs. Includes Two Tone, Paper Grain, Colour Offset, Soft Vignette, Glass Dark and Glass Light.\n\nRequires PaintFE 1.5.0 or a compatible preview. PaintFE 1.4.28 does not include Community packs. Installed effects run offline; themes and icons are applied only after preview. See the repository guides for installation and contribution instructions.','draft':False,'prerelease':True})
         existing={x['name']:x for x in release['assets']}
         for p in fresh:
             for url in [p['url'],p.get('icon_url',''),p.get('screenshot_url','')]:

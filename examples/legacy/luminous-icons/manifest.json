@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "icons",
+  "appearance": "icons.zip",
+  "id": "paintfe.luminous-icons",
+  "version": "1.0.0",
+  "name": "Luminous Icons",
+  "author": "PaintFE",
+  "description": "The familiar colourful PaintFE icons, available as a portable pack. Missing icons fall back to the app defaults.",
+  "license": "MIT",
+  "tags": [
+    "Colourful",
+    "Icons"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

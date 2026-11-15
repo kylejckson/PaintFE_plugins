@@ -14,4 +14,4 @@ Add a Number parameter with ID `hue`, label `Hue`, minimum -180, maximum 180, st
 
 A pack can contain multiple effects. Add an effect in Properties and select it to load its code into the existing editor. Name, category and parameter changes are saved with the pack. Test Apply, Cancel and a single Undo before submitting.
 
-To work from files, copy `plugins/paintfe/colour-workshop` to your publisher folder, change its IDs and metadata, then run the validation commands in CONTRIBUTING.md. The examples demonstrate complete manifests and scripts.
+To work from files, copy `plugins/paintfe/two-tone` to your publisher folder, change its IDs and metadata, then run the validation commands in CONTRIBUTING.md. The examples demonstrate complete manifests and scripts. For data-only appearance packs, see [Themes and icon packs](appearance-packs.md).
