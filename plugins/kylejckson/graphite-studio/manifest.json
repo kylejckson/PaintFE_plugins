@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "theme",
+  "appearance": "theme.txt",
+  "id": "kylejckson.graphite-studio",
+  "version": "1.0.0",
+  "name": "Graphite Studio",
+  "author": "kylejckson",
+  "description": "Neutral graphite surfaces and muted mint highlights. No coloured cast around your image.",
+  "license": "MIT",
+  "tags": [
+    "Dark",
+    "Opaque",
+    "Minimal"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

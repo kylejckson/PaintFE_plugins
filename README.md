@@ -33,3 +33,15 @@ No account is needed to download public packs. Comments, submissions and reports
 Earlier Workshop packs are retained under `examples/legacy` for authors. Effects, themes and icon packs are supported in PaintFE 1.5.0. Installation never applies a theme automatically.
 
 Luminous is already the default icon family in PaintFE; Classic remains available in Preferences. The icon-pack format example is kept under examples/legacy, outside the downloadable catalogue.
+
+## Theme collection
+
+Ten themes and the separate Retro 98 Icons pack, all authored by kylejckson,
+are available through View > Community add-ons. The collection includes
+Charcoal Frosted Aero, Charcoal Sharp Glass, Retro 98, Retro XP, Paper Studio,
+Graphite Studio, Northern Mist, Moss Terminal, Amber Console and Pearl Aero.
+
+PaintFE 1.5.0 supports the colours and layouts. Grain, raised retro control
+edges and solid accent headers need a newer client containing those finishes.
+The current release safely ignores those extra appearance options. Native
+blur also depends on platform support. See [the collection guide](docs/theme-collection.md).

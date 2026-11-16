@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "theme",
+  "appearance": "theme.txt",
+  "id": "kylejckson.paper-studio",
+  "version": "1.0.0",
+  "name": "Paper Studio",
+  "author": "kylejckson",
+  "description": "Warm paper, clear graphite text and quiet orange highlights. A calm place to work.",
+  "license": "MIT",
+  "tags": [
+    "Light",
+    "Opaque",
+    "Warm"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

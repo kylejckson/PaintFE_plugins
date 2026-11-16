@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "theme",
+  "appearance": "theme.txt",
+  "id": "kylejckson.northern-mist",
+  "version": "1.0.0",
+  "name": "Northern Mist",
+  "author": "kylejckson",
+  "description": "Cool slate glass, soft teal highlights and enough surface to keep things clear.",
+  "license": "MIT",
+  "tags": [
+    "Dark",
+    "Glass",
+    "Cool"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

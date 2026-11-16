@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "theme",
+  "appearance": "theme.txt",
+  "id": "kylejckson.retro-xp",
+  "version": "1.0.0",
+  "name": "Retro XP",
+  "author": "kylejckson",
+  "description": "A familiar mix of warm grey, bright blue and green, with softer corners.",
+  "license": "MIT",
+  "tags": [
+    "Light",
+    "Retro",
+    "Opaque",
+    "Blue"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

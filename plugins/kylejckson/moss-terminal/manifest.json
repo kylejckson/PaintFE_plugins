@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "theme",
+  "appearance": "theme.txt",
+  "id": "kylejckson.moss-terminal",
+  "version": "1.0.0",
+  "name": "Moss Terminal",
+  "author": "kylejckson",
+  "description": "Olive charcoal, parchment text and sage highlights in a compact, quiet layout.",
+  "license": "MIT",
+  "tags": [
+    "Dark",
+    "Opaque",
+    "Green",
+    "Compact"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

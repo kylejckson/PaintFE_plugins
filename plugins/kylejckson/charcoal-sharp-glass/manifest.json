@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "theme",
+  "appearance": "theme.txt",
+  "id": "kylejckson.charcoal-sharp-glass",
+  "version": "1.0.0",
+  "name": "Charcoal Sharp Glass",
+  "author": "kylejckson",
+  "description": "Straight edges, compact spacing and charcoal glass with a little Signal orange.",
+  "license": "MIT",
+  "tags": [
+    "Dark",
+    "Glass",
+    "Sharp",
+    "Orange"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

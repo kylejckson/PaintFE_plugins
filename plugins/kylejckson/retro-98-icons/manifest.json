@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "icons",
+  "appearance": "icons.zip",
+  "id": "kylejckson.retro-98-icons",
+  "version": "1.0.0",
+  "name": "Retro 98 Icons",
+  "author": "kylejckson",
+  "description": "Small, colourful pixel icons with crisp outlines. Made to go with Retro 98, and available separately.",
+  "license": "MIT",
+  "tags": [
+    "Retro",
+    "Pixel",
+    "Classic"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

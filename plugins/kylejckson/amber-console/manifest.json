@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "theme",
+  "appearance": "theme.txt",
+  "id": "kylejckson.amber-console",
+  "version": "1.0.0",
+  "name": "Amber Console",
+  "author": "kylejckson",
+  "description": "Almost black, warm amber and crisp outlines. A console feel without the blinking lights.",
+  "license": "MIT",
+  "tags": [
+    "Dark",
+    "Opaque",
+    "Amber",
+    "Sharp"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

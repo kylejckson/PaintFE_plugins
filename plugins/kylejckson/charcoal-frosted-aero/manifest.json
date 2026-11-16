@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "theme",
+  "appearance": "theme.txt",
+  "id": "kylejckson.charcoal-frosted-aero",
+  "version": "1.0.0",
+  "name": "Charcoal Frosted Aero",
+  "author": "kylejckson",
+  "description": "Charcoal, Signal orange and frosted panels that let your desktop show through.",
+  "license": "MIT",
+  "tags": [
+    "Dark",
+    "Glass",
+    "Frosted",
+    "Orange"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}

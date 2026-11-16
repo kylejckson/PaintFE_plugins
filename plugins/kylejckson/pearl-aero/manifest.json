@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "api": 1,
+  "kind": "theme",
+  "appearance": "theme.txt",
+  "id": "kylejckson.pearl-aero",
+  "version": "1.0.0",
+  "name": "Pearl Aero",
+  "author": "kylejckson",
+  "description": "Pearl-white glass, silver edges and a touch of Signal orange. Bright without feeling bare.",
+  "license": "MIT",
+  "tags": [
+    "Light",
+    "Glass",
+    "Frosted"
+  ],
+  "effects": [],
+  "icon": "art/icon.png",
+  "screenshot": "art/preview.png"
+}
