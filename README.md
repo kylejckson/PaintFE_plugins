@@ -1,10 +1,10 @@
-# PaintFE community plugins
+# PaintFE community add-ons
 
 Community effects, themes and icon packs for PaintFE. Script effects use native dialogs and process images locally.
 
-**Requires PaintFE 1.5.0 or a compatible preview build with Community packs and API 1. These features are not in PaintFE 1.4.28.**
+**Requires PaintFE 1.5.0 or newer, with Community add-ons and API 1.**
 
-In a compatible build, open **View > Community packs**, choose **Fetch plugins**, then install a pack. Fetching listings and downloading packs connects to GitHub. Installed effects run offline. You can also import a `.pfeplugin` file without connecting.
+In a compatible build, open **View > Community add-ons**, choose **Fetch add-ons**, then install a pack. Fetching listings and downloading packs connects to GitHub. Installed effects run offline. You can also import a `.pfeplugin` file without connecting.
 
 ## Available packs
 
@@ -30,6 +30,6 @@ These are original MIT-licensed examples. Other contributors retain their chosen
 
 No account is needed to download public packs. Comments, submissions and reports use GitHub. The repository does not collect app telemetry or user documents.
 
-Earlier Workshop packs are retained under `examples/legacy` for authors. New appearance packs require a compatible upcoming PaintFE build. Installation never applies a theme automatically.
+Earlier Workshop packs are retained under `examples/legacy` for authors. Effects, themes and icon packs are supported in PaintFE 1.5.0. Installation never applies a theme automatically.
 
 Luminous is already the default icon family in PaintFE; Classic remains available in Preferences. The icon-pack format example is kept under examples/legacy, outside the downloadable catalogue.

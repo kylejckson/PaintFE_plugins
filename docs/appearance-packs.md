@@ -1,6 +1,6 @@
 # Themes and icon packs
 
-Appearance packs require PaintFE 1.5.0 or a compatible preview. Installing a pack does not apply it. The browser's Preview and apply action offers Keep appearance and Restore previous appearance. These packs cannot contain scripts or change agent permissions.
+Appearance packs require PaintFE 1.5.0 or newer. Installing a pack does not apply it. The browser's Preview and apply action offers Keep appearance and Restore previous appearance. These packs cannot contain scripts or change agent permissions.
 
 ## Create a theme
 
